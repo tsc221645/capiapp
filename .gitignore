@@ -1,0 +1,22 @@
+# Node modules (Vue frontend)
+capiapp/node_modules/
+capiapp/dist/
+
+# Go build artifacts
+backend/main
+*.out
+
+# Docker volumes / local configs
+pgdata/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor configs
+.vscode/
+.idea/
+
+# Logs
+*.log

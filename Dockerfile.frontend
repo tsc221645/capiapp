@@ -1,9 +1,12 @@
 FROM node:20
 
 WORKDIR /app
+
 COPY capiapp/package*.json ./
 RUN npm install
+
 COPY capiapp/ ./
 
-EXPOSE 5173
+EXPOSE 8080
+
 CMD ["npm", "run", "serve"]

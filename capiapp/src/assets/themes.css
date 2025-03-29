@@ -1,0 +1,23 @@
+/*Light theme */
+:root {
+    --bg-color: #F5F0E8;
+    --primary-color: #EADBC8;
+    --accent-color-1: #C0926B;
+    --accent-color-2: #A6D6B2;
+    --accent-color-3: #84875A;
+    --accent-color-4: #75502D;
+    --text-color: #2E2E2E;
+    
+  }
+
+
+/* Dark theme */
+[data-theme="dark"] {
+    --bg-color: #1E1C1A;
+    --primary-color: #2E2A26;
+    --accent-color-1: #80BFA5;
+    --accent-color-2: #A6D6B2;
+    --accent-color-3: #84875A;
+    --accent-color-4: #E1B382;
+    --text-color: #F3ECE6;
+  }

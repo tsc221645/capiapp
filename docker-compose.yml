@@ -11,6 +11,17 @@ services:
     depends_on:
       - db
 
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./capiapp:/app
+    stdin_open: true
+    tty: true
+
   db:
     image: postgres:15
     env_file:
@@ -18,4 +29,7 @@ services:
     ports:
       - "${DB_PORT}:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data"
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

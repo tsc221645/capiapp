@@ -1,20 +1,24 @@
 <template>
+    <div class="home-page">
     <header class="header">
-        <div class="logo">
-            <img src="../assets/capybara_logo.png" alt="Capybara Logo" class="logo-img" />
-            <span>Capi App</span>
-            <div class="header-controls">
-              <button class="login-button">Login</button>
+      <div class="logo">
+        <img src="../assets/capybara_logo.png" alt="Capybara Logo" class="logo-img" />
+        <span>Capi App</span>
+      </div>
 
-              <!-- Toggle dark mode -->
-              <label class="theme-toggle">
-                <input type="checkbox" v-model="darkMode" @change="toggleTheme" />
-                <span class="slider"></span>
-              </label>
-            </div>
+      <div class="header-controls">
+        <button class="login-button">Login</button>
+
+        <div class="theme-toggle">
+          <label class="switch">
+            <input type="checkbox" v-model="darkMode" @change="toggleTheme" />
+            <span class="slider"></span>
+          </label>
+          
         </div>
+      </div>
     </header>
-    <body>
+    
       <main class="main-content">
         <div class="left">
           <h1>
@@ -31,15 +35,7 @@
           <button class="action-btn beige">Create your own <br/>capi-community</button>
         </div>
       </main>
-        
-
-        
-    </body>
-    <footer>
-
-    </footer>
-
-
+    </div>
 </template>
 
 
@@ -66,7 +62,27 @@ export default{
 </script>
 
 
-<style>
+<style >
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+.home-page {
+  background-color: var(--bg-color);
+  height: 100dvh;
+}
+
 
 .header {
   width: 100%;
@@ -82,6 +98,7 @@ export default{
   font-family: 'Libre Baskerville', serif;
 }
 
+
 .header-controls {
   display: flex;
   align-items: center;
@@ -89,23 +106,31 @@ export default{
 }
 
 .login-button {
-  background-color: var(--login-btn);
-  color: var(--text-color);
+  background-color: #75502D;
+  color: white;
   padding: 0.4rem 1rem;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Dark mode switch */
 .theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.switch {
   position: relative;
   display: inline-block;
-  width: 40px;
-  height: 22px;
+  width: 42px;
+  height: 24px;
 }
 
-.theme-toggle input {
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -114,30 +139,37 @@ export default{
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0; left: 0;
-  right: 0; bottom: 0;
-  background-color: #ccc;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-background-color);
+  border-radius: 24px;
   transition: 0.3s;
-  border-radius: 34px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 16px;
+  height: 18px;
+  width: 18px;
   left: 3px;
   bottom: 3px;
   background-color: white;
-  transition: 0.3s;
   border-radius: 50%;
+  transition: 0.3s;
 }
 
 input:checked + .slider {
-  background-color: #42b983;
+  background-color: var(--toggle-background-color);
 }
 
 input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+.theme-icon {
+  font-size: 1.2rem;
   transform: translateX(18px);
 }
 
@@ -152,11 +184,6 @@ input:checked + .slider:before {
   width: 40px;
   height: 40px;
   margin-right: 10px;
-}
-
-.login-button{
-    background-color: var(--login-btn);
-    color: var(--text-color);
 }
 
 .actions{
@@ -193,9 +220,10 @@ input:checked + .slider:before {
   background-color: var(--primary-color);
 }
 
+
 .main-content {
   display: flex;
-  
+  background-color: var(--bg-color);
   font-family: 'Libre Baskerville', serif;
   letter-spacing: 0.1em;
   justify-content: space-center;

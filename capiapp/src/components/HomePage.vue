@@ -7,7 +7,7 @@
       </div>
 
       <div class="header-controls">
-        <button class="login-button">Login</button>
+        <button class="login-button" @click="goToLogin">Login</button>
 
         <div class="theme-toggle">
           <label class="switch">
@@ -51,6 +51,9 @@ export default{
         toggleTheme() {
         const theme = this.darkMode ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', theme);
+        },
+        goToLogin() {
+            this.$router.push({ name: 'LoginPage' });
         }
     },
     mounted() {

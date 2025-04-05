@@ -1,4 +1,4 @@
-FROM golang:1.21
+FROM golang:1.23
 
 WORKDIR /app
 COPY backend/go.* ./
@@ -6,6 +6,6 @@ RUN go mod download
 COPY backend/ ./
 
 RUN go build -o main .
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["./main"]

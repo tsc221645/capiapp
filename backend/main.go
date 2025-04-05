@@ -1,15 +1,23 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"capiappproject/database"
+	"capiappproject/handlers"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
-	http.HandleFunc("/api/hello", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "Hello from go backend!")
+	app := fiber.New()
+
+	database.Connect()
+
+	app.Get("/api/hello", func(c *fiber.Ctx) error {
+		return c.SendString("Hello from Go backend using Fiber! 🚀")
 	})
 
-	fmt.Println("Listening in port :8080")
-	http.ListenAndServe(":8080", nil)
+	app.Post("/register", handlers.Register)
+
+	println("🚀 Server listening on http://localhost:3000")
+	app.Listen(":3000")
 }

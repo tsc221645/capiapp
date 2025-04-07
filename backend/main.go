@@ -13,10 +13,11 @@ func main() {
 	database.Connect()
 
 	app.Get("/api/hello", func(c *fiber.Ctx) error {
-		return c.SendString("Hello from Go backend using Fiber! 🚀")
+		return c.SendString("Hello from Go backend using Fiber!")
 	})
 
-	app.Post("/register", handlers.Register)
+	app.Post("/signup", handlers.Register)
+	app.Post("/login", handlers.Login)
 
 	println("🚀 Server listening on http://localhost:3000")
 	app.Listen(":3000")

@@ -5,7 +5,8 @@
             <h2>Login</h2>
             <input type="text" v-model="username" placeholder="username" />
             <input type="password" v-model="password" placeholder="password" />
-            <button @click="handleLogin">Login</button>
+            <p v-if="error">{{ error }}</p>
+            <button @click="login">Login</button>
             
             <div  class="logo signup-text">
                 <span><router-link to="/signup">Don't have an account? Sign Up</router-link></span>
@@ -28,9 +29,40 @@ export default{
         }
     },
     methods:{
-        goToSignUp() {
-            this.$router.push({ name: 'SignUp' });
+      async login() {
+        try {
+          const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: this.username,
+              password: this.password,
+            }),
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Login failed');
+          }
+
+          const data = await response.json();
+          localStorage.setItem('token', data.token); 
+
+          alert('successful login');
+
+          // Redirigir al home o perfil
+          this.$router.push({ name: 'Profile' });
+
+        } catch (error) {
+          alert(error.message);
         }
+      },
+
+      goToSignUp() {
+        this.$router.push({ name: 'SignUp' });
+      }
     }
     
 

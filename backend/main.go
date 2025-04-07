@@ -7,6 +7,7 @@ import (
 	"capiappproject/middleware"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
@@ -28,6 +29,11 @@ func main() {
 			"username": username,
 		})
 	})
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "http://localhost:5173", // frontend
+		AllowHeaders: "Origin, Content-Type, Accept, Authorization",
+	}))
 
 	app.Post("/signup", handlers.Register)
 	app.Post("/login", handlers.Login)

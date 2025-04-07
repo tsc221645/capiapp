@@ -6,10 +6,10 @@
             <input type="text" v-model="username" placeholder="username" />
             <input type="text" v-model="email" placeholder="email" />
             <input type="password" v-model="password" placeholder="password" />
-            <button @click="handlesignup">Sign Up</button>
+            <button @click="signup">Sign Up</button>
             
             <div  class="logo signup-text">
-                <span><router-link to="/signup">Already have an account? Login</router-link></span>
+                <span><router-link to="/login">Already have an account? Login</router-link></span>
                 <img src="../assets/capybara_logo.png" alt="Capybara Logo" class="logo-img" />
             </div>
         </div>
@@ -29,7 +29,34 @@ export default{
             password:''
         }
     },
+    methods:{ 
+      async signup() {
+        try {
+          const res = await fetch('http://localhost:3000/signup', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              username: this.username,
+              email: this.email,
+              password: this.password
+            })
+          })
 
+          if (!res.ok) {
+            const errorData = await res.json()
+            throw new Error(errorData.error || 'Error al registrar')
+          }
+
+          alert('Usuario creado correctamente. Inicia sesión.')
+          this.$router.push({ name: 'Login' })
+        } catch (err) {
+          this.error = err.message
+        }
+    }
+  }
+    
 }
 
 </script>

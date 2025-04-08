@@ -53,7 +53,7 @@ export default{
           alert('successful login');
 
           // Redirigir al home o perfil
-          this.$router.push({ name: 'Profile' });
+          this.$router.push({ name: 'ProfilePage' });
 
         } catch (error) {
           alert(error.message);

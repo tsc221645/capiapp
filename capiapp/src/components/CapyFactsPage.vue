@@ -16,6 +16,12 @@
                 </div>
             </div>
         </header>
+        <div class="facts-container">
+
+
+
+
+        </div>
 
     </div>
 
@@ -43,6 +49,13 @@ export default{
 .capy-facts-page {
     background-color: var(--bg-color);
     height: 100dvh;
+    font-family: 'Libre Baskerville', serif;
+}
+
+
+.facts-container{
+    background-color: var(--bg-color);
+    display:block;
     font-family: 'Libre Baskerville', serif;
 }
 </style>

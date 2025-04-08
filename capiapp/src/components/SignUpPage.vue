@@ -50,7 +50,7 @@ export default{
           }
 
           alert('Usuario creado correctamente. Inicia sesión.')
-          this.$router.push({ name: 'Login' })
+          this.$router.push({ name: 'ProfilePage' })
         } catch (err) {
           this.error = err.message
         }

@@ -1,6 +1,7 @@
 import HomePage from "./components/HomePage.vue";
 import SignUpPage from "./components/SignUpPage.vue";
 import LoginPage from "./components/LoginPage.vue";
+import ProfilePage from "./components/ProfilePage.vue";
 import CapyFactsPage from "./components/CapyFactsPage.vue";
 import CapyGalleryPage  from "./components/CapyGalleryPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
@@ -21,6 +22,12 @@ const routes = [
         component: LoginPage,
         path: "/login",
       },
+    {
+      name:"ProfilePage",
+      component: ProfilePage,
+      path:"/profile"
+    } , 
+
     {
       name: "CapyFactsPage",
       component: CapyFactsPage,

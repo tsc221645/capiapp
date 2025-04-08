@@ -3,7 +3,7 @@
     <header class="header">
       <div class="logo">
         <img src="../assets/capybara_logo.png" alt="Capybara Logo" class="logo-img" />
-        <span>Capi App</span>
+        <span>Capy App</span>
       </div>
 
       <div class="header-controls">

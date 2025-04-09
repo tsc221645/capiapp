@@ -53,10 +53,10 @@ export default{
         menuVisible: false,
         menuItems: [
           { label: 'main page', route: '/' },
-          { label: 'capybara facts', route: '/facts' },
-          { label: 'galery', route: '/gallery' },
-          { label: 'capygames', route: '/games' },
-          { label: 'capyquotes', route: '/quotes' },
+          { label: 'capybara facts', route: '/capyfacts' },
+          { label: 'galery', route: '/capygallery' },
+          { label: 'capygames', route: '/capygames' },
+          { label: 'capyquotes', route: '/capyquotes' },
           { label: 'meditating with capy', route: '/meditate' }
         ]
         };

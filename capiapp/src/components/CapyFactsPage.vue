@@ -1,7 +1,7 @@
 <template>
     <div class="capy-facts-page">
         <header class="header">
-            <div class="logo">
+            <div class="logo" @click="toggleMenu">
                 <img src="../assets/capybara_logo.png" alt="Capybara Logo" class="logo-img" />
                 <span>CapyFacts</span>
             </div>
@@ -15,6 +15,9 @@
 
                 </div>
             </div>
+            <transition name="fade-menu">
+                <MenuTab :show="menuVisible" :items="menuItems" />
+            </transition>
         </header>
         <div class="facts-container">
 
@@ -29,16 +32,38 @@
 
 
 <script>
+import MenuTab from './MenuTab.vue'
 export default{
-    name:'CapyFactsPage',
-    methods:{
-        goToLogin(){
-            this.$router.push({name:'LoginPage'})
-        },
+    components: { MenuTab },
+    name: 'CapyFactsPage',
+    data() {
+        return {
+        darkMode: false,
+        menuVisible: false,
+        menuItems: [
+          { label: 'main page', route: '/' },
+          { label: 'capybara facts', route: '/capyfacts' },
+          { label: 'galery', route: '/capygallery' },
+          { label: 'capygames', route: '/capygames' },
+          { label: 'capyquotes', route: '/capyquotes' },
+          { label: 'meditating with capy', route: '/meditate' }
+        ]
+        };
+    },
+    methods: {
         toggleTheme() {
-            const theme = this.darkMode ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', theme);
+        const theme = this.darkMode ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        },
+        goToLogin() {
+            this.$router.push({ name: 'LoginPage' });
+        },
+        toggleMenu() {
+          this.menuVisible = !this.menuVisible;
         }
+    },
+    mounted() {
+        this.toggleTheme();
     }
 }
 

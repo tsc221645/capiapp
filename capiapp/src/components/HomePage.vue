@@ -92,6 +92,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--text-color);
   background-color: var(--primary-color);
   padding: 0.8rem 2rem; 
   border-radius: 12px;

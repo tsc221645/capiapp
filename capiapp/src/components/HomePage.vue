@@ -1,7 +1,7 @@
 <template>
     <div class="home-page">
     <header class="header">
-      <div class="logo">
+      <div class="logo" @click="toggleMenu">
         <img src="../assets/capybara_logo.png" alt="Capybara Logo" class="logo-img" />
         <span>Capy App</span>
       </div>
@@ -17,6 +17,9 @@
           
         </div>
       </div>
+      <transition name="fade-menu">
+        <MenuTab :show="menuVisible" :items="menuItems" />
+      </transition>
     </header>
     
       <main class="main-content">
@@ -40,11 +43,22 @@
 
 
 <script>
+import MenuTab from './MenuTab.vue'
 export default{
+    components: { MenuTab },
     name: 'HomePage',
     data() {
         return {
-        darkMode: false
+        darkMode: false,
+        menuVisible: false,
+        menuItems: [
+          { label: 'main page', route: '/' },
+          { label: 'capybara facts', route: '/facts' },
+          { label: 'galery', route: '/gallery' },
+          { label: 'capygames', route: '/games' },
+          { label: 'capyquotes', route: '/quotes' },
+          { label: 'meditating with capy', route: '/meditate' }
+        ]
         };
     },
     methods: {
@@ -54,6 +68,9 @@ export default{
         },
         goToLogin() {
             this.$router.push({ name: 'LoginPage' });
+        },
+        toggleMenu() {
+          this.menuVisible = !this.menuVisible;
         }
     },
     mounted() {
@@ -257,6 +274,19 @@ input:checked + .slider:before {
   
   flex: 1;
   
+}
+.fade-menu-enter-active, .fade-menu-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-menu-enter-from, .fade-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.fade-menu-enter-to, .fade-menu-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 </style>

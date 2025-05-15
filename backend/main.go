@@ -30,8 +30,10 @@ func main() {
 		})
 	})
 
+	app.Get("/capyfacts", handlers.GetCapyFacts)
+
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:5173", // frontend
+		AllowOrigins: "*", // frontend
 		AllowHeaders: "Origin, Content-Type, Accept, Authorization",
 	}))
 
